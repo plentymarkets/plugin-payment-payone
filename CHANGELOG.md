@@ -1,5 +1,8 @@
 # Changelog Plentymarkets BS Payone Plugin
 
+## v1.0.10 (2020-03-06)
+* Cleaned logging of request and response data
+
 ## v1.0.9 (2018-04-10)
 * Changed user_guide alert Text
 

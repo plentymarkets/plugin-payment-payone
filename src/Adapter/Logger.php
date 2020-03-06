@@ -53,9 +53,7 @@ class Logger //implements LoggerContract
     public function setIdentifier(string $identifier)
     {
         $this->logger = $this->getLogger($identifier);
-        $this->logger->setReferenceType($this->referenceType);
-        $this->logger->setReferenceValue($this->referenceValue);
-
+        $this->addReference($this->referenceType, $this->referenceValue);
         return $this;
     }
 
@@ -208,32 +206,15 @@ class Logger //implements LoggerContract
 
         return $this;
     }
-
+    
     /**
      * @param string $referenceType
-     *
-     * @return Logger
-     */
-    public function setReferenceType(
-        string $referenceType
-    ) {
-        $this->referenceType = $referenceType;
-        $this->logger->setReferenceType($referenceType);
-
-        return $this;
-    }
-
-    /**
      * @param $referenceValue
-     *
-     * @return Logger
+     * @return $this
      */
-    public function setReferenceValue(
-        $referenceValue
-    ) {
-        $this->referenceValue = $referenceValue;
-        $this->logger->setReferenceValue($referenceValue);
-
+    public function addReference(string $referenceType, $referenceValue)
+    {
+        $this->logger->addReference($referenceType,$referenceValue);
         return $this;
     }
 
