@@ -172,4 +172,16 @@ abstract class PaymentAbstract extends PaymentMethodService
     {
         return false;
     }
+
+    /**
+     * Get the url for the backend icon
+     *
+     * @return string
+     */
+    public function getBackendIcon(): string
+    {
+        $app = pluginApp(Application::class);
+        $icon = $app->getUrlPath(PluginConstants::NAME).'/images/logos/'.$this::PAYMENT_CODE.'_backend_icon.svg';
+        return $icon;
+    }
 }

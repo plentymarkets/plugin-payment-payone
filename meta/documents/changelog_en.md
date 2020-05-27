@@ -1,8 +1,13 @@
 # Release Notes for PAYONE
 
+## 1.0.13 (2020-27-05)
+
+### Changed
+- Added Icon for the backend
+
 ## 1.1.12 (2020-03-09)
 
-### Geändert
+### Changed
 - Optimized logging of the data transfer with the Payone Api.
 
 ## 1.1.11 (2020-03-03)
