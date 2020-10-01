@@ -4,6 +4,9 @@
 
 namespace Payone\Helpers;
 
+use Payone\Methods\Klarna\PayoneKlarnaDirectDebitPaymentMethod;
+use Payone\Methods\Klarna\PayoneKlarnaInstallmentsPaymentMethod;
+use Payone\Methods\Klarna\PayoneKlarnaInvoicePaymentMethod;
 use Payone\Methods\PayoneAmazonPayPaymentMethod;
 use Payone\Methods\PayoneCCPaymentMethod;
 use Payone\Methods\PayoneCODPaymentMethod;
@@ -131,7 +134,10 @@ class PaymentHelper
             PayoneCCPaymentMethod::PAYMENT_CODE,
             PayoneDirectDebitPaymentMethod::PAYMENT_CODE,
             PayoneInvoiceSecurePaymentMethod::PAYMENT_CODE,
-            PayoneAmazonPayPaymentMethod::PAYMENT_CODE
+            PayoneAmazonPayPaymentMethod::PAYMENT_CODE,
+            PayoneKlarnaDirectDebitPaymentMethod::PAYMENT_CODE,
+            PayoneKlarnaInstallmentsPaymentMethod::PAYMENT_CODE,
+            PayoneKlarnaInvoicePaymentMethod::PAYMENT_CODE
         ];
     }
 

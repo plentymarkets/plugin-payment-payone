@@ -1,11 +1,11 @@
 <?php
 
-namespace PayoneApi\Request\GenericPayment;
+namespace PayoneApi\Request\GenericPayment\AmazonPay;
 
 use PayoneApi\Request\Parts\Config;
 use PayoneApi\Request\Parts\SystemInfo;
 
-class AmazonPaySetOrderReferenceRequest extends GenericAmazonPayRequestBase
+class AmazonPayGetOrderReferenceRequest extends GenericAmazonPayRequestBase
 {
     /**
      * @var string
@@ -18,11 +18,12 @@ class AmazonPaySetOrderReferenceRequest extends GenericAmazonPayRequestBase
     protected $workorderid;
 
     /**
-     * AmazonPaySetOrderReferenceRequest constructor.
+     * AmazonPayGetOrderReferenceRequest constructor.
      *
      * @param Config $config
      * @param SystemInfo $info
      * @param string $amazonReferenceId
+     * @param string $amazonAddressToken
      * @param string $workOrderId
      * @param string $amount
      * @param string $currency
@@ -31,6 +32,7 @@ class AmazonPaySetOrderReferenceRequest extends GenericAmazonPayRequestBase
         Config $config,
         SystemInfo $info,
         string $amazonReferenceId,
+        string $amazonAddressToken,
         string $workOrderId,
         string $amount,
         string $currency
@@ -38,8 +40,9 @@ class AmazonPaySetOrderReferenceRequest extends GenericAmazonPayRequestBase
     {
         parent::__construct(
             [
-                'action' => 'setorderreferencedetails',
+                'action' => 'getorderreferencedetails',
                 'amazon_reference_id' => $amazonReferenceId,
+                'amazon_address_token' => $amazonAddressToken,
             ],
             $config,
             $info,
@@ -51,9 +54,9 @@ class AmazonPaySetOrderReferenceRequest extends GenericAmazonPayRequestBase
     }
 
     /**
-     * @return string
+     * @return mixed
      */
-    public function getAmount(): string
+    public function getAmount()
     {
         return $this->amount;
     }

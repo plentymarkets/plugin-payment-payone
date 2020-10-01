@@ -9,6 +9,9 @@ use Payone\Helpers\AddressHelper;
 use Payone\Helpers\OrderHelper;
 use Payone\Helpers\PaymentHelper;
 use Payone\Helpers\ShopHelper;
+use Payone\Methods\Klarna\PayoneKlarnaDirectDebitPaymentMethod;
+use Payone\Methods\Klarna\PayoneKlarnaInstallmentsPaymentMethod;
+use Payone\Methods\Klarna\PayoneKlarnaInvoicePaymentMethod;
 use Payone\Methods\PaymentAbstract;
 use Payone\Methods\PaymentMethodServiceFactory;
 use Payone\Methods\PayoneAmazonPayPaymentMethod;
@@ -209,6 +212,24 @@ class PayoneServiceProvider extends ServiceProvider
         $payContainer->register(
             'Payone::' . PayoneAmazonPayPaymentMethod::PAYMENT_CODE,
             PayoneAmazonPayPaymentMethod::class,
+            $events
+        );
+
+        $payContainer->register(
+            'Payone::' . PayoneKlarnaDirectDebitPaymentMethod::PAYMENT_CODE,
+            PayoneKlarnaDirectDebitPaymentMethod::class,
+            $events
+        );
+
+        $payContainer->register(
+            'Payone::' . PayoneKlarnaInstallmentsPaymentMethod::PAYMENT_CODE,
+            PayoneKlarnaInstallmentsPaymentMethod::class,
+            $events
+        );
+
+        $payContainer->register(
+            'Payone::' . PayoneKlarnaInvoicePaymentMethod::PAYMENT_CODE,
+            PayoneKlarnaInvoicePaymentMethod::class,
             $events
         );
     }

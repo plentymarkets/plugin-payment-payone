@@ -1,6 +1,6 @@
 <?php
 
-namespace PayoneApi\Request\GenericPayment;
+namespace PayoneApi\Request\GenericPayment\AmazonPay;
 
 use PayoneApi\Request\Parts\Config;
 use PayoneApi\Request\Parts\SystemInfo;

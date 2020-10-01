@@ -43,7 +43,8 @@
   "serviceProvider": "Payone\\Providers\\PayoneServiceProvider",
   "runOnBuild": [
     "Payone\\Migrations\\CreatePaymentMethods",
-    "Payone\\Migrations\\CreateAmazonPayPaymentMethod"
+    "Payone\\Migrations\\CreateAmazonPayPaymentMethod",
+    "Payone\\Migrations\\CreateKlarnaPaymentMethods"
   ],
   "dataProviders": [
     {
