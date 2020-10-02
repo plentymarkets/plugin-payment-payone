@@ -11,10 +11,7 @@ use Payone\Methods\Constants\ClearingType;
  */
 class PayoneKlarnaPaymentMethods extends PaymentAbstract
 {
-    /**
-     * @var string
-     */
-    public $clearingType = ClearingType::FINANCING;
+    const CLEARING_TYPE = ClearingType::FINANCING;
 
     /**
      * @var array

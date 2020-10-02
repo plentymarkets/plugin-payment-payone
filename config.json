@@ -897,6 +897,189 @@
           }
         }
       }
+    },
+    "Config.KlarnaDirectDebit": {
+      "label": "Config.KlarnaDirectDebitTab",
+      "formFields": {
+        "PAYONE_PAYONE_KLARNA_DIRECT_DEBIT.active": {
+          "type": "selectBox",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNADIRECTDEBITActiveLabel",
+          "options": {
+            "defaultValue": "1",
+            "selectBoxValues": [
+              {
+                "value": "0",
+                "caption": "Config.PAYONEPAYONEKLARNADIRECTDEBITActivePossibleValue0"
+              },
+              {
+                "value": "1",
+                "caption": "Config.PAYONEPAYONEKLARNADIRECTDEBITActivePossibleValue1"
+              }
+            ]
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_DIRECT_DEBIT.name": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNADIRECTDEBITNameLabel",
+          "options": {
+            "defaultValue": "Klarna Pay now"
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_DIRECT_DEBIT.description": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNADIRECTDEBITDescriptionLabel",
+          "options": {}
+        },
+        "PAYONE_PAYONE_KLARNA_DIRECT_DEBIT.minCartAmount": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNADIRECTDEBITMinCartAmountLabel",
+          "options": {
+            "defaultValue": "0"
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_DIRECT_DEBIT.maxCartAmount": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNADIRECTDEBITMaxCartAmountLabel",
+          "options": {
+            "defaultValue": "2000"
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_DIRECT_DEBIT.allowedCountries": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNADIRECTDEBITAllowedCountriesLabel",
+          "options": {
+            "defaultValue": "AT,DK,FI,DE,NL,NO,SE,CH"
+          }
+        }
+      }
+    },
+    "Config.KlarnaInstallments": {
+      "label": "Config.KlarnaInstallmentsTab",
+      "formFields": {
+        "PAYONE_PAYONE_KLARNA_INSTALLMENTS.active": {
+          "type": "selectBox",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINSTALLMENTSActiveLabel",
+          "options": {
+            "defaultValue": "1",
+            "selectBoxValues": [
+              {
+                "value": "0",
+                "caption": "Config.PAYONEPAYONEKLARNAINSTALLMENTSActivePossibleValue0"
+              },
+              {
+                "value": "1",
+                "caption": "Config.PAYONEPAYONEKLARNAINSTALLMENTSActivePossibleValue1"
+              }
+            ]
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_INSTALLMENTS.name": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINSTALLMENTSNameLabel",
+          "options": {
+            "defaultValue": "Klarna Slice it"
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_INSTALLMENTS.description": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINSTALLMENTSDescriptionLabel",
+          "options": {}
+        },
+        "PAYONE_PAYONE_KLARNA_INSTALLMENTS.minCartAmount": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINSTALLMENTSMinCartAmountLabel",
+          "options": {
+            "defaultValue": "0"
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_INSTALLMENTS.maxCartAmount": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINSTALLMENTSMaxCartAmountLabel",
+          "options": {
+            "defaultValue": "2000"
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_INSTALLMENTS.allowedCountries": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINSTALLMENTSAllowedCountriesLabel",
+          "options": {
+            "defaultValue": "AT,DK,FI,DE,NL,NO,SE,CH"
+          }
+        }
+      }
+    },
+    "Config.KlarnaInvoice": {
+      "label": "Config.KlarnaInvoiceTab",
+      "formFields": {
+        "PAYONE_PAYONE_KLARNA_INVOICE.active": {
+          "type": "selectBox",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINVOICEActiveLabel",
+          "options": {
+            "defaultValue": "1",
+            "selectBoxValues": [
+              {
+                "value": "0",
+                "caption": "Config.PAYONEPAYONEKLARNAINVOICEActivePossibleValue0"
+              },
+              {
+                "value": "1",
+                "caption": "Config.PAYONEPAYONEKLARNAINVOICEActivePossibleValue1"
+              }
+            ]
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_INVOICE.name": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINVOICENameLabel",
+          "options": {
+            "defaultValue": "Klarna Pay later"
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_INVOICE.description": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINVOICEDescriptionLabel",
+          "options": {}
+        },
+        "PAYONE_PAYONE_KLARNA_INVOICE.minCartAmount": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINVOICEMinCartAmountLabel",
+          "options": {
+            "defaultValue": "0"
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_INVOICE.maxCartAmount": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINVOICEMaxCartAmountLabel",
+          "options": {
+            "defaultValue": "2000"
+          }
+        },
+        "PAYONE_PAYONE_KLARNA_INVOICE.allowedCountries": {
+          "type": "inputText",
+          "required": false,
+          "label": "Config.PAYONEPAYONEKLARNAINVOICEAllowedCountriesLabel",
+          "options": {
+            "defaultValue": "AT,DK,FI,DE,NL,NO,SE,CH"
+          }
+        }
+      }
     }
   }
 }

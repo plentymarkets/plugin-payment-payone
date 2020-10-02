@@ -15,6 +15,6 @@ class PayoneKlarnaDirectDebitPaymentMethod extends PayoneKlarnaPaymentMethods
 {
     const PAYMENT_CODE = 'PAYONE_PAYONE_KLARNA_DIRECT_DEBIT';
 
-    const FINANCING_TYPE = FinancingType::KLARNA_DIRECT_DEBIT;
+    const FINANCING_TYPE =  FinancingType::KLARNA_DIRECT_DEBIT;
 
 }

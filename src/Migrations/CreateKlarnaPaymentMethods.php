@@ -8,7 +8,7 @@ use Payone\PluginConstants;
 use Plenty\Modules\Payment\Method\Contracts\PaymentMethodRepositoryContract;
 
 /**
- * Migration to create payment mehtods
+ * Migration to create payment methods
  *
  * Class CreateKlarnaPaymentMethods
  */

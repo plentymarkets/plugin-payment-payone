@@ -20,6 +20,7 @@ use Payone\Methods\PayoneCODPaymentMethod;
 use Payone\Methods\PayoneDirectDebitPaymentMethod;
 use Payone\Methods\PayoneInvoicePaymentMethod;
 use Payone\Methods\PayoneInvoiceSecurePaymentMethod;
+use Payone\Methods\PayoneKlarnaPaymentMethods;
 use Payone\Methods\PayonePaydirektPaymentMethod;
 use Payone\Methods\PayonePayolutionInstallmentPaymentMethod;
 use Payone\Methods\PayonePayPalPaymentMethod;
@@ -32,6 +33,7 @@ use Payone\Models\PaymentCache;
 use Payone\Models\PaymentMethodContent;
 use Payone\PluginConstants;
 use Payone\Services\AmazonPayService;
+use Payone\Services\KlarnaService;
 use Payone\Services\OrderPdf;
 use Payone\Services\PaymentCreation;
 use Payone\Services\PaymentService;
@@ -261,11 +263,7 @@ class PayoneServiceProvider extends ServiceProvider
                 if (!$selectedPaymentMopId || !$paymentHelper->isPayonePayment($selectedPaymentMopId)) {
                     return;
                 } elseif ($event->getMop() == $paymentHelper->getMopId(PayoneAmazonPayPaymentMethod::PAYMENT_CODE)) {
-                    $amazonPayActive = $configRepository->get(PluginConstants::NAME . '.' . PayoneAmazonPayPaymentMethod::PAYMENT_CODE . '.active');
-                    if (isset($amazonPayActive) && $amazonPayActive == 1) {
-                        return $this->registerAmazonPayIntegration($event, $basket);
-                    }
-                    return;
+                    return $this->amazonPayContent($event, $basket);
                 }
                 $paymentCode = $paymentHelper->getPaymentCodeByMop($selectedPaymentMopId);
                 /** @var PaymentAbstract $payment */
@@ -274,8 +272,8 @@ class PayoneServiceProvider extends ServiceProvider
                 /** @var AddressHelper $addressHelper */
                 $addressHelper = pluginApp(AddressHelper::class);
                 $billingAddress = $addressHelper->getBasketBillingAddress($basket);
-                if( $paymentCode == PayoneInvoiceSecurePaymentMethod::PAYMENT_CODE &&
-                    (!isset($billingAddress->birthday) || !strlen($billingAddress->birthday)) ) {
+                if ($paymentCode == PayoneInvoiceSecurePaymentMethod::PAYMENT_CODE &&
+                    (!isset($billingAddress->birthday) || !strlen($billingAddress->birthday))) {
 
                     /** @var \Plenty\Plugin\Translation\Translator $translator */
                     $translator = pluginApp(\Plenty\Plugin\Translation\Translator::class);
@@ -287,6 +285,20 @@ class PayoneServiceProvider extends ServiceProvider
 
                     $event->setValue($dateOfBirthMissingMessage);
                     $event->setType(GetPaymentMethodContent::RETURN_TYPE_ERROR);
+                    return;
+                } elseif ($paymentCode == PayoneKlarnaDirectDebitPaymentMethod::PAYMENT_CODE ||
+                    $paymentCode == PayoneKlarnaInvoicePaymentMethod::PAYMENT_CODE ||
+                    $paymentCode == PayoneKlarnaInstallmentsPaymentMethod::PAYMENT_CODE) {
+
+                    /** @var KlarnaService $klarnaService */
+                    $klarnaService = pluginApp(KlarnaService::class);
+                    $klarnaService->startSession($paymentCode, $basket);
+
+                    // in renderingType auslagern
+
+                    // twig einbauen
+                    $event->setValue(null);
+                    $event->setType(GetPaymentMethodContent::RETURN_TYPE_HTML);
                     return;
                 }
 
@@ -450,7 +462,7 @@ class PayoneServiceProvider extends ServiceProvider
      * @param GetPaymentMethodContent $event
      * @param Basket $basket
      */
-    public function registerAmazonPayIntegration(GetPaymentMethodContent $event, Basket $basket)
+    public function amazonPayContent(GetPaymentMethodContent $event, Basket $basket)
     {
         /** @var AmazonPayService $amazonPayService */
         $amazonPayService = pluginApp(AmazonPayService::class);

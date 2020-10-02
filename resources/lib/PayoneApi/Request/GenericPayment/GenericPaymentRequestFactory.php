@@ -3,9 +3,12 @@
 namespace PayoneApi\Request\GenericPayment;
 
 use PayoneApi\Lib\Version;
+use PayoneApi\Request\GenericPayment\AmazonPay\AmazonPayConfigurationRequest;
+use PayoneApi\Request\GenericPayment\AmazonPay\AmazonPayConfirmOrderReferenceRequest;
+use PayoneApi\Request\GenericPayment\AmazonPay\AmazonPayGetOrderReferenceRequest;
+use PayoneApi\Request\GenericPayment\AmazonPay\AmazonPaySetOrderReferenceRequest;
 use PayoneApi\Request\Parts\SystemInfo;
 use PayoneApi\Request\Parts\Config;
-use PayoneApi\Request\RequestFactoryContract;
 
 class GenericPaymentRequestFactory
 {
@@ -17,6 +20,7 @@ class GenericPaymentRequestFactory
      */
     public static function create(string $paymentMethod, array $data, string $referenceId = null)
     {
+        $config = null;
         if($data['context']) {
             $context = $data['context'];
             $config = new Config(
@@ -28,6 +32,7 @@ class GenericPaymentRequestFactory
             );
         }
 
+        $systemInfo = null;
         if($data['systemInfo']) {
             $systemInfoData = $data['systemInfo'];
             $systemInfo = new SystemInfo(
@@ -38,7 +43,8 @@ class GenericPaymentRequestFactory
             );
         }
 
-        if($data['add_paydata'] && array_key_exists('action', $data['add_paydata'])) {
+        if ($data['add_paydata'] && array_key_exists('action', $data['add_paydata']) &&
+            $config instanceof Config && $systemInfo instanceof SystemInfo) {
             switch ($data['add_paydata']['action']) {
                 case 'getconfiguration':
                     // Other configs can be added here. Just add an if-condition for $paymentMethod

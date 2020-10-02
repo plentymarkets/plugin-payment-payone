@@ -2,6 +2,9 @@
 
 namespace Payone\Models;
 
+use Payone\Methods\Klarna\PayoneKlarnaDirectDebitPaymentMethod;
+use Payone\Methods\Klarna\PayoneKlarnaInstallmentsPaymentMethod;
+use Payone\Methods\Klarna\PayoneKlarnaInvoicePaymentMethod;
 use Payone\Methods\PayoneAmazonPayPaymentMethod;
 use Payone\Methods\PayoneCCPaymentMethod;
 use Payone\Methods\PayoneDirectDebitPaymentMethod;
@@ -32,6 +35,12 @@ class PaymentMethodContent
             case PayoneSofortPaymentMethod::PAYMENT_CODE:
                 return GetPaymentMethodContent::RETURN_TYPE_REDIRECT_URL;
             case PayoneAmazonPayPaymentMethod::PAYMENT_CODE:
+                return GetPaymentMethodContent::RETURN_TYPE_HTML;
+            case PayoneKlarnaInvoicePaymentMethod::PAYMENT_CODE:
+                return GetPaymentMethodContent::RETURN_TYPE_HTML;
+            case PayoneKlarnaInstallmentsPaymentMethod::PAYMENT_CODE:
+                return GetPaymentMethodContent::RETURN_TYPE_HTML;
+            case PayoneKlarnaDirectDebitPaymentMethod::PAYMENT_CODE:
                 return GetPaymentMethodContent::RETURN_TYPE_HTML;
         }
 

@@ -11,5 +11,6 @@ class GenericPayment
     const ACTIONTYPE_GETORDERREFERENCEDETAILS = "getorderreferencedetails";
     const ACTIONTYPE_SETORDERREFERENCEDETAILS = "setorderreferencedetails";
     const ACTIONTYPE_CONFIRMORDERREFERENCE = "confirmorderreference";
+    const ACTIONTYPE_STARTSESSION = "start_session";
 
 }
