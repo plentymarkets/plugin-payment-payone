@@ -13,10 +13,7 @@ class PayoneKlarnaPaymentMethods extends PaymentAbstract
 {
     const CLEARING_TYPE = ClearingType::FINANCING;
 
-    /**
-     * @var array
-     */
-    static $supportedCountries = [
+    const SUPPORTED_COUNTRIES = [
         "AT",
         "DK",
         "FI",
@@ -27,10 +24,7 @@ class PayoneKlarnaPaymentMethods extends PaymentAbstract
         "CH"
     ];
 
-    /**
-     * @var array
-     */
-    static $supportedCurrencies = [
+    const SUPPORTED_CURRENCIES = [
         "EUR",
         "CHF",
         "DKK",
