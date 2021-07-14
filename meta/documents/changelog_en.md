@@ -1,6 +1,11 @@
 # Release Notes for PAYONE
 
-## 2.2.1
+## 2.1.2
+
+### Fixed
+- When checking whether a payment method is available for subsequent payment, the same rules that are applied to the checkout als apply here.
+
+## 2.1.1
 
 ### Fixed
 - Due to a faulty configuration of the plugin there could be errors in the webshop, this has been fixed.

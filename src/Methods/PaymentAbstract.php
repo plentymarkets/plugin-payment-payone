@@ -38,7 +38,8 @@ abstract class PaymentAbstract extends PaymentMethodBaseService
         Application $application,
         PaymentValidator $paymentValidator,
         SettingsService $settingsService
-    ) {
+    )
+    {
         $this->paymentValidator = $paymentValidator;
         $this->app = $app = $application;
         $this->settingsService = $settingsService;
@@ -63,7 +64,7 @@ abstract class PaymentAbstract extends PaymentMethodBaseService
     {
         /** @var Translator $translator */
         $translator = pluginApp(Translator::class);
-        return $translator->trans('Payone::PaymentMethods.'.$this::PAYMENT_CODE, [], $lang);
+        return $translator->trans('Payone::PaymentMethods.' . $this::PAYMENT_CODE, [], $lang);
     }
 
     /**
@@ -93,7 +94,7 @@ abstract class PaymentAbstract extends PaymentMethodBaseService
     {
         /** @var Translator $translator */
         $translator = pluginApp(Translator::class);
-        return $translator->trans('Payone::PaymentMethods.'.$this::PAYMENT_CODE.'_DESCRIPTION', [], $lang);
+        return $translator->trans('Payone::PaymentMethods.' . $this::PAYMENT_CODE . '_DESCRIPTION', [], $lang);
     }
 
     /**
@@ -109,9 +110,9 @@ abstract class PaymentAbstract extends PaymentMethodBaseService
      */
     public function getMaxCartAmount(): float
     {
-        $amount = $this->settingsService->getPaymentSettingsValue('MaximumAmount',$this::PAYMENT_CODE);
+        $amount = $this->settingsService->getPaymentSettingsValue('MaximumAmount', $this::PAYMENT_CODE);
 
-        return $amount ? (float) $amount : 0.;
+        return $amount ? (float)$amount : 0.;
     }
 
     /**
@@ -119,9 +120,9 @@ abstract class PaymentAbstract extends PaymentMethodBaseService
      */
     public function getMinCartAmount(): float
     {
-        $amount = $this->settingsService->getPaymentSettingsValue('MinimumAmount',$this::PAYMENT_CODE);
+        $amount = $this->settingsService->getPaymentSettingsValue('MinimumAmount', $this::PAYMENT_CODE);
 
-        return $amount ? (float) $amount : 0.;
+        return $amount ? (float)$amount : 0.;
     }
 
     /**
@@ -155,7 +156,7 @@ abstract class PaymentAbstract extends PaymentMethodBaseService
     /**
      * Get name for the backend
      *
-     * @param  string  $lang
+     * @param string $lang
      * @return string
      */
     public function getBackendName(string $lang = 'de'): string
@@ -181,13 +182,13 @@ abstract class PaymentAbstract extends PaymentMethodBaseService
     public function getBackendIcon(): string
     {
         $app = pluginApp(Application::class);
-        $icon = $app->getUrlPath(PluginConstants::NAME).'/images/logos/'.strtolower($this::PAYMENT_CODE).'_backend_icon.svg';
+        $icon = $app->getUrlPath(PluginConstants::NAME) . '/images/logos/' . strtolower($this::PAYMENT_CODE) . '_backend_icon.svg';
         return $icon;
     }
 
     /**
      * Can the delivery address be different from the invoice address?
-     * 
+     *
      * @return bool
      */
     public function canHandleDifferingDeliveryAddress(): bool
@@ -197,7 +198,7 @@ abstract class PaymentAbstract extends PaymentMethodBaseService
 
     /**
      * Check if all settings for the payment method are set.
-     * 
+     *
      * @param SettingsService $settingsService
      * @return bool
      */
@@ -208,12 +209,29 @@ abstract class PaymentAbstract extends PaymentMethodBaseService
 
     /**
      * Is the payment method active for the given currency?
-     * 
+     *
      * @param $currency
      * @return bool
      */
     public function isActiveForCurrency($currency): bool
     {
         return true;
+    }
+
+    /**
+     * @param int|null $orderId
+     * @return bool
+     */
+    public function isSwitchableTo($orderId = null): bool
+    {
+        if($orderId > 0) {
+            /** @var PaymentOrderValidator $paymentOrderValidator */
+            $paymentOrderValidator = pluginApp(PaymentOrderValidator::class);
+
+            return (bool)$this->settingsService->getPaymentSettingsValue('active', $this::PAYMENT_CODE)
+                && $paymentOrderValidator->validate($this, $this->settingsService, $orderId);
+        }
+
+        return false;
     }
 }

@@ -42,3 +42,7 @@ https://www.psg-projektmanagement.de/payone-plentymarkets/
 
 Termin vereinbaren:
 <a href="https://calendly.com/payone-plentymarkets/payone-plentymarkets">hier klicken</a>
+
+Die PSG Projektmanagement GmbH ist ein langjähriger Partner der PAYONE, sowie ein langjähriger Partner von plentymarkets und ist somit Dein zentraler Ansprechpartner der optimal mit allen Partnern vernetzt ist. Bitte wende dich nicht direkt an PAYONE, um den reibungslosen Ablauf nicht zu gefährden.
+
+Hier der offizielle Link zur Partnerschaft mit PAYONE: [https://payone.com/DE-de/plentymarkets-payone-plugin](https://payone.com/DE-de/plentymarkets-payone-plugin)

@@ -1,6 +1,11 @@
 # Release Notes für PAYONE
 
-## 2.2.1
+## 2.1.2
+
+### Behoben
+- Bei der Prüfung, ob eine Zahlungsart für die nachträgliche Bezahlung zur Verfügung steht, werden die entsprechenden Regeln angewendet, die auch für den Checkout gelten.
+
+## 2.1.1
 
 ### Behoben
 - Durch eine fehlerhafte Konfiguration des Plugins konnte es Fehler im Webshop geben, dies wurde behoben.  
