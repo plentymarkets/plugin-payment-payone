@@ -1,5 +1,10 @@
 # Release Notes für PAYONE
 
+## 2.7.2 (2024-02-17)
+
+### Fixed
+- Fixed “Class GuzzleHttp\Client not found” error when calling Payone library scripts.
+
 ## 2.7.1 (2024-09-12)
 
 ### Behoben
