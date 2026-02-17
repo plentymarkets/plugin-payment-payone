@@ -19,7 +19,3 @@ spl_autoload_register(function ($class) use ($payoneApiBaseDir) {
         require $file;
     }
 });
-
-if (is_file(__DIR__ . '/vendor/autoload.php')) {
-    require_once __DIR__ . '/vendor/autoload.php';
-}
