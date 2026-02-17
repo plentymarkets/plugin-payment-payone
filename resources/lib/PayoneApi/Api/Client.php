@@ -2,6 +2,8 @@
 
 namespace PayoneApi\Api;
 
+use GuzzleHttp\Client as GuzzleHttpClient;
+
 /**
  * Class Client
  */
@@ -12,7 +14,7 @@ class Client implements ClientContract
      */
     protected $url;
     /**
-     * @var \GuzzleHttp\Client
+     * @var GuzzleHttpClient
      */
     protected $client;
     /**
@@ -29,11 +31,11 @@ class Client implements ClientContract
      */
     public function __construct()
     {
-        $this->client = new \GuzzleHttp\Client();
+        $this->client = new GuzzleHttpClient();
     }
 
     /**
-     * @return \GuzzleHttp\Client
+     * @return GuzzleHttpClient
      */
     public function getClient()
     {
@@ -41,11 +43,11 @@ class Client implements ClientContract
     }
 
     /**
-     * @param \GuzzleHttp\Client $client
+     * @param GuzzleHttpClient $client
      *
      * @return Client
      */
-    public function setClient(\GuzzleHttp\Client $client)
+    public function setClient(GuzzleHttpClient $client)
     {
         $this->client = $client;
 
