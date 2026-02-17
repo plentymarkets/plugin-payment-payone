@@ -2,7 +2,6 @@
 
 /**
  * Autoloader for PayoneApi library (no composer.json or vendor needed for this namespace).
- * Dependencies (e.g. Guzzle) are loaded from vendor/ when present (e.g. SDK symlink).
  */
 
 $payoneApiBaseDir = __DIR__ . '/PayoneApi/';
