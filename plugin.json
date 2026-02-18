@@ -1,5 +1,5 @@
 {
-  "version": "2.7.1",
+  "version": "2.7.2",
   "license": "",
   "pluginIcon": "icon_plugin_xs.png",
   "price": 0.0,
@@ -34,7 +34,7 @@
     "Ceres":">=5.0.4"
   },
   "dependencies": {
-    "guzzlehttp/guzzle": "6.*",
+    "guzzlehttp/guzzle": "7.*",
     "symfony/serializer": "3.2.7",
     "symfony/property-access": "3.2.7",
     "doctrine/common": "2.13.1",
